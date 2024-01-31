@@ -28,7 +28,7 @@ def arguments(dice1, dice2, sides):
 
     # One player technically may have a smaller private space than the other,
     # but we just take the maximum for simplicity
-    D_priv = max(dice1, dice1)*sides
+    D_priv = max(dice1, dice2)*sides
     
     # And then two features to describe from whos perspective we
     # are given the private information
