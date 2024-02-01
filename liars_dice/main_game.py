@@ -152,7 +152,7 @@ class LiarsDiceGame:
             state = game.public()
             
             self.display_text(f"> You rolled {r1}!")
-            your_roll_text = ', '.join(map(str, r2))
+            your_roll_text = ', '.join(map(str, r1))
             self.roll_label.config(text=f"Your Roll:\n {your_roll_text}")
             # print(f"> You rolled {r1}!")
             players = [Human(self), AI(self, privs[1])]
@@ -160,8 +160,9 @@ class LiarsDiceGame:
             cur = 0
             while True:
                 action = players[cur].get_action(state)
+                play = "human" if cur==0 else "robot"
 
-                self.display_text(f"> The {players[cur]} called {repr_action(action)}!")
+                self.display_text(f"> The {play} called {repr_action(action)}!")
 
                 if action == game.lie:
                     last_call = game.last_call_state(state)
@@ -169,7 +170,7 @@ class LiarsDiceGame:
                     self.display_text(f"> The rolls were {r1} and {r2}.")
                     if res:
                         self.display_text(f"> The call {repr_action(last_call)} was good!")
-                        self.display_text(f"> The {players[cur]} loses!")
+                        self.display_text(f"> The {play} loses!")
                         if(cur==0):
                             d1-=1
                         else:
@@ -178,7 +179,7 @@ class LiarsDiceGame:
                     
                     else:
                         self.display_text(f"> The call {repr_action(last_call)} was a bluff!")
-                        self.display_text(f"> The {players[cur]} wins!")
+                        self.display_text(f"> The {play} wins!")
                         if(cur==0):
                             d2-=1
                         else:
