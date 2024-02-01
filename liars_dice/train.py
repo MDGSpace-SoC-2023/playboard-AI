@@ -9,6 +9,7 @@ import itertools
 import math
 from collections import Counter
 import argparse
+from game import *
 import os
 
 from snyd import *

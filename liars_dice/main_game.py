@@ -1,11 +1,8 @@
 import tkinter as tk
 from tkinter import font
-from tkinter import messagebox
 from tkinter import simpledialog
 import random
 import torch
-from torch import nn
-from collections import Counter
 import re
 from NNET import *
 from game import *

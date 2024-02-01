@@ -1,22 +1,15 @@
 import random
 import torch
-from torch import nn
-import itertools
-import numpy as np
-import math
-from collections import Counter
-import argparse
 import re
 from NNET import *
 from game import *
-import pygame
 
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 d1, d2 = 2, 2
 sides = 6
-path = "/home/chinmayk25/SoC/liars-dice/mod/model22"
+path = "./model/model22.zip"
 
 checkpoint = torch.load(path, map_location=torch.device(DEVICE))
 
@@ -77,10 +70,9 @@ def repr_action(action):
 while True:
     while (ans := input("Do you want to go first? [y/n/r] ")) not in ["y", "n", "r"]:
         pass
-    path = "/home/chinmayk25/SoC/liars-dice/mod/model" + str(d1) + str(d2)
+    path = "./model/model" + str(d1) + str(d2) + ".zip"
 
     checkpoint = torch.load(path, map_location=torch.device(DEVICE))
-
 
     D_PUB, D_PRI, *_ = arguments(
             d1, d2, sides
